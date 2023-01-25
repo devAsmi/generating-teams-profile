@@ -1,5 +1,8 @@
 const inquirer = require("inquirer");
 const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+const generateHtml = require("./src/generate");
 
 const questions = [
   {
@@ -24,7 +27,9 @@ const questions = [
   },
 ];
 
-const allAnswers = [];
+const managers = [];
+const engineers = [];
+const interns = [];
 
 function addIntern() {
   inquirer
@@ -50,8 +55,9 @@ function addIntern() {
         message: "Enter Intern's School name.",
       },
     ])
-    .then((a) => {
-      console.log(a);
+    .then(({ InternName, InternId, InternEmail, InternSchool }) => {
+      const i = new Intern(InternName, InternId, InternEmail, InternSchool);
+      interns.push(i);
       // then show the menu option again
       showOperationOptions();
     });
@@ -81,8 +87,15 @@ function addEngineer() {
         message: "Enter Engineer's Github username.",
       },
     ])
-    .then((a) => {
-      console.log(a);
+    .then(({ EngineerName, EngineerId, EngineerEmail, EngineerGithub }) => {
+      const e = new Engineer(
+        EngineerName,
+        EngineerId,
+        EngineerEmail,
+        EngineerGithub
+      );
+      engineers.push(e);
+
       // then show the menu option again
       showOperationOptions();
     });
@@ -99,16 +112,18 @@ function showOperationOptions() {
       },
     ])
     .then((a) => {
-      if (a.operation != "Done") {
-        // show the questions for the operation
-        switch (a.operation) {
-          case "Add an Engineer":
-            addEngineer();
-            break;
-          case "Add an Intern":
-            addIntern();
-            break;
-        }
+      // show the questions for the operation
+      switch (a.operation) {
+        case "Add an Engineer":
+          addEngineer();
+          break;
+        case "Add an Intern":
+          addIntern();
+          break;
+        case "Done":
+          // once we are done getting input from the user
+          generateHtml(managers, engineers, interns);
+          break;
       }
     });
 }
@@ -119,7 +134,7 @@ function init() {
     .then(({ managerName, managerId, email, officeNumber }) => {
       // create a manager object based on the answer
       const manager = new Manager(managerName, managerId, email, officeNumber);
-      allAnswers.push(manager);
+      managers.push(manager);
       showOperationOptions();
     });
 }
