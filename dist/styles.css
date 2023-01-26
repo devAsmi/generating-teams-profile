@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background: tomato;
+  color: white;
+  font-size: 32px;
+  font-weight: bolder;
+}
+
+.card-header {
+  background: #2196f3;
+  color: white;
+}
+
+.card {
+  width: 300px;
+}

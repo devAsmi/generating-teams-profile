@@ -83,7 +83,7 @@ function addEngineer() {
       },
       {
         type: "input",
-        name: "EngineergGithub",
+        name: "EngineerGithub",
         message: "Enter Engineer's Github username.",
       },
     ])
