@@ -14,6 +14,10 @@
 
 [License](#license)
 
+[Screenshot](#screenshot)
+
+[Video](#video)
+
 ## Description
 
 It is a nodejs application that allows a user to set up their team which can include a manager, multiple engineers, and multiple interns. Once the user provides the information it will generate a html file.
@@ -33,3 +37,13 @@ Licensed under the [MIT](https://choosealicense.com/licenses/mit) license
 ## Questions
 
 [Github repo](https://github.com/devAsmi)
+
+## Screenshot
+
+![Screenshot of webpage](./TeamProfile.png)
+
+![Gif of application](./TeamProfile.gif)
+
+## Video
+
+[Video Link](https://drive.google.com/file/d/1ByoF9KHHld4xP5EG18xYodhdyFCm309T/view)
